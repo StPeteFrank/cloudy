@@ -3,6 +3,7 @@ const citySearch = () => {
   let inputArea = document.querySelector('input')
   let citySelection = inputArea.value
   let urlCityData = `https://api.openweathermap.org/data/2.5/weather?q=${citySelection}&appid=b0c76d1569358d0297f8ab56efafdb49&units=imperial`
+// Add =imperial to the end of the link to change incoming temp data to farenheit.
 fetch(urlCityData).then(response => 
   response.json()).then(weatherData => {
     console.log(weatherData)
@@ -14,15 +15,15 @@ fetch(urlCityData).then(response =>
   theUL.appendChild(temperature)
 
 let humidity = document.createElement('li')
-  humidity.textContent = `Humidity: ${weatherData.main.humidity}°F`
+  humidity.textContent = `Humidity: ${weatherData.main.humidity}`
   theUL.appendChild(humidity)
+
+  let windSpeed = document.createElement('li')
+  windSpeed.textContent = `Wind Speed: ${weatherData.wind.speed} MPH`
+  theUL.appendChild(windSpeed)
 
 })
 }
-
-
-
-// const addTempToUL = temperature => {
   
 
 
@@ -30,9 +31,6 @@ const main = () => {
   let searchButton = document.querySelector('.search')
   searchButton.addEventListener('click', citySearch)
 }
-
-
-
 
 
 
