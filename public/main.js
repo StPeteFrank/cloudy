@@ -6,10 +6,17 @@ const citySearch = () => {
 fetch(urlCityData).then(response => 
   response.json()).then(weatherData => {
     console.log(weatherData)
+    
     let theUL =document.querySelector('ul')
-  let newLI = document.createElement('li')
-  newLI.textContent = `Temperature: ${weatherData.main.temp}°F`
-  theUL.appendChild(newLI)
+
+  let temperature = document.createElement('li')
+  temperature.textContent = `Temperature: ${weatherData.main.temp}°F`
+  theUL.appendChild(temperature)
+
+let humidity = document.createElement('li')
+  humidity.textContent = `Humidity: ${weatherData.main.humidity}°F`
+  theUL.appendChild(humidity)
+
 })
 }
 

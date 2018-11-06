@@ -20,3 +20,9 @@ h1 {
   color: gold;
   font-size: 3em;
 }
+li {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  
+}
