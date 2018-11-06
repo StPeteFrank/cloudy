@@ -1,4 +1,63 @@
-const citySearch = () => {
+//  Create class WeatherAPI
+//  --this class will encapsulates all the logic with working with the WeatherAPI
+//  --should have view property API_URL
+//  --should have view property getWeatherByZipCode
+//  --should have view property getWeatherByCity
+
+class WeatherAPI {
+  getWeatherForCity(city) {
+    let cityURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=b0c76d1569358d0297f8ab56efafdb49&units=imperial`
+    fetch(cityURL)
+      .then(response => {
+        return response.json()
+      })
+      .then(weatherData => {
+        let temp = weatherData.main.temp
+        let humidity = weatherData.main.humidity
+        let windSpeed = weatherData.wind.speed
+        let dom = new DocumentObjectModelOne()
+        dom.substitute(temp, humidity, windSpeed)
+      })
+  }
+}
+
+class DocumentObjectModelOne {
+  substitute(temp, humidity, windSpeed) {
+    this.appendLI(temp)
+    this.appendLI(humidity)
+    this.appendLI(windSpeed)
+  }
+
+  appendLI(value) {
+    let theUL = document.querySelector('ul')
+    let newLI = document.createElement('li')
+    newLI.textContent = value
+    theUL.appendChild(newLI)
+  }
+  city() {
+    let theInput = document.querySelector('.city-input').value
+    return theInput
+  }
+}
+
+userCitySearch = () => {
+  let dom = new DocumentObjectModelOne()
+  let city = dom.city()
+
+  let weatherAPI = new WeatherAPI()
+  weatherAPI.getWeatherForCity(city)
+}
+
+const main = () => {
+  document.querySelector('.search').addEventListener('click', userCitySearch)
+}
+//   let zipSearchButton = document.querySelector('.searchZip')
+//   zipSearchButton.addEventListener('click', zipSearch)
+//
+
+document.addEventListener('DOMContentLoaded', main)
+
+/*const citySearch = () => {
   let inputArea = document.querySelector('.city-input')
   let citySelection = inputArea.value
   let urlCityData = `https://api.openweathermap.org/data/2.5/weather?q=${citySelection}&appid=b0c76d1569358d0297f8ab56efafdb49&units=imperial`
@@ -29,7 +88,6 @@ const zipSearch = () => {
   let citySelection = inputArea.value
   let urlCityData = `https://api.openweathermap.org/data/2.5/weather?zip=${citySelection}&appid=b0c76d1569358d0297f8ab56efafdb49&units=imperial`
 
-  // Add =imperial to the end of the link to change incoming temp data to farenheit.
   fetch(urlCityData)
     .then(response => response.json())
     .then(weatherData => {
@@ -58,20 +116,15 @@ const main = () => {
   let zipSearchButton = document.querySelector('.searchZip')
   zipSearchButton.addEventListener('click', zipSearch)
 }
-// const mainZip = () => {
-//   let searchButton = document.querySelector('.searchZip')
-//   searchButton.addEventListener('click', zipSearch)
-// }
 
 document.addEventListener('DOMContentLoaded', main)
 
-//------------------------------------------
-//      Writing Out My Algorithm
-// Find the spot in the user interface where I want to put the temp
-//
-// Create a new element to put the temperature
-// Set the elements text to whatever is inside weather.main.temp
-// Make that element appear on the screen
+//-------Instructions in English of what I need-----------
 
-//my id from OpenWeatherMap:
+//  Create a class that holds all the logic for interacting with the DOM
+//  --should have method addForecastToDom
+//  --should have method getUserInput
+
+//--------My ID from OpenWeatherMap:-----------------------
 //  b0c76d1569358d0297f8ab56efafdb49
+*/
