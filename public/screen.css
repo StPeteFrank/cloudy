@@ -20,11 +20,19 @@ h1 {
   color: gold;
   font-size: 3em;
 }
+h2 {
+  display: flex;
+  color: gold;
+  justify-content: center;
+}
 li {
   list-style: none;
   display: flex;
   justify-content: space-around;
+  margin: 0.5em;
   font-size: 1.5em;
-  color: orange;
-  
+  color: rgb(45, 255, 4);
+}
+button {
+  background-color: gold;
 }
