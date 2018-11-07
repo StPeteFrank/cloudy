@@ -51,10 +51,10 @@ class DocumentObjectModelOne {
     let theInput = document.querySelector('.city-input').value
     return theInput
   }
-  zip() {
-    let theInput = document.querySelector('.zip-input').value
-    return theInput
-  }
+  // zip() {
+  //   let theInput = document.querySelector('.zip-input').value
+  //   return theInput
+  // }
 }
 
 userCitySearch = () => {
@@ -64,15 +64,15 @@ userCitySearch = () => {
   weatherAPI.getWeatherForCity(city)
 }
 
-userZipSearch = () => {
-  let dom = new DocumentObjectModelOne()
-  let zip = dom.zip()
-  let weatherAPI = new WeatherAPI()
-  weatherAPI.getWeatherForCity(zip)
-}
+// userZipSearch = () => {
+//   let dom = new DocumentObjectModelOne()
+//   let zip = dom.zip()
+//   let weatherAPI = new WeatherAPI()
+//   weatherAPI.getWeatherForCity(zip)
+// }
 const main = () => {
   document.querySelector('.search').addEventListener('click', userCitySearch)
-  document.querySelector('.searchZip').addEventListener('click', userZipSearch)
+  // document.querySelector('.searchZip').addEventListener('click', userZipSearch)
 }
 document.addEventListener('DOMContentLoaded', main)
 
